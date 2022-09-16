@@ -1,18 +1,18 @@
 # Semantic Similarity
 In this project, an intelligent system is built to estimate the *semantic similarity* of any given pair of words. In this way, the system can quickly find the synonym of a word, provided a group of candidates.
 
-The semantic similarity is measured using the *semantic descriptor vector* of each word, which is represented as $desc_w = \{w_i: n_i\}$ where $n_i$ is the number of sentences in which both the word $w$ and $w_i$ have appeared. For example, in the paragraph 
+The semantic similarity is measured using the *semantic descriptor vector* of each word, which is represented as $desc_w = \lbrace w_i: n_i \rbrace$ where $n_i$ is the number of sentences in which both the word $w$ and $w_i$ have appeared. For example, in the paragraph 
 
 > I am a sick man. I am a spiteful man. I am an unattractive man. 
 >
 > ​                                  -- From *Notes from the Underground* by Fyodor Dostoyevsky
 
-$desc_{'man'} = \{'i':3, ~'am':3, ~'a': 2\, ~'sick':1, ~'spiteful':1, ~'an':1, ~'unattractive':1\}$. The semantic descriptor vector of each word can be therefore expressed in a similar way, which are vectors $u = \{u_1, u_2, ..., u_n\}$ and $v=\{v_1, v_2, ..., v_n\}$.
+$desc_{'man'} = \lbrace 'i':3, ~'am':3, ~'a': 2\, ~'sick':1, ~'spiteful':1, ~'an':1, ~'unattractive':1 \rbrace$. The semantic descriptor vector of each word can be therefore expressed in a similar way, which are vectors $u = \lbrace u_1, u_2, ..., u_n \rbrace$ and $v= \lbrace v_1, v_2, ..., v_n \rbrace$.
 
 Thus, the semantic similarity of the words, $u$ and $v$, can be calculated as 
-$$
-sim(u,v) = \frac{u \cdot v}{|u||v|} = \frac{\sum_{i=1}^{n} u_i v_i}{\sqrt{(\sum_{i=1}^{n}u_i^2)(\sum_{i=1}^{n}v_i^2)}}
-$$
+
+$$ sim(u,v) = \frac{u \cdot v}{|u||v|} = \frac{\sum_{i=1}^{n} u_i v_i}{\sqrt{(\sum_{i=1}^{n}u_i^2)(\sum_{i=1}^{n}v_i^2)}} $$
+
 where $u_i v_i$ is the product of the number of times that the given word appears together with the word $u_i$ and that it apears together with the word $v_i$. In other words, if a word only appears with $u$, but not $v$, the product of $u_i v_i$ will equal 0. 
 
 After comparing with all candidates, the word with the highest similarity will be chosen as the synonym. 
